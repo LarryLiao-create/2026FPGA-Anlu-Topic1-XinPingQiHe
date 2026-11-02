@@ -1,0 +1,4780 @@
+{
+  "hardware_config": {
+    "schema": "iccoder.hardware_config.v2",
+    "version": "2.0",
+    "status": "complete",
+    "status_meaning": "board_profile_capture_complete_not_final_constraint_ready",
+    "constraint_ready": false,
+    "constraint_readiness": {
+      "ready": false,
+      "scope": "selected_project_assignments_only",
+      "authority": "constraint_preflight_validator_only",
+      "missing_field_policy": "not_ready",
+      "input_fingerprint": null,
+      "evaluated_at": null,
+      "blocking_reasons": [
+        "project_top_ports_not_confirmed",
+        "project_specific_assignments_not_validated",
+        "ethernet_bank_voltage_conflict_unresolved"
+      ],
+      "invalidation_triggers": [
+        "board_or_template_change",
+        "template_digest_change",
+        "rtl_or_top_module_change",
+        "project_port_change",
+        "selected_interface_or_protocol_mode_change",
+        "clock_or_timing_requirement_change",
+        "bank_voltage_or_io_standard_change",
+        "jumper_or_route_change",
+        "constraint_source_change"
+      ]
+    },
+    "board_identity_confirmed": true,
+    "type": "board",
+    "language": "verilog",
+    "board_id": "anlogic-pang-eg4s20",
+    "board_name": "康芯 HX4S20",
+    "board_summary": "采用安路 EG4S20BG256 芯片，LUTs 19,600，分布式 RAM 156.8 Kbit，集成 2M×32bit SDRAM。板载 USB-JTAG 编程器、Type-C USB 供电/串口，千兆网口、HDMI 双接口、VGA、TF 卡槽、SPI FLASH、数码管，双色 LED、按键开关等丰富外设，标配 2 组 40 芯 GPIO 扩展口（每组 36 路 3.3V IO；差分需按 FPGA 原生 P/N 配对复核）。适合 FPGA 入门学习、中小型 RTL 原型验证及接口协议开发。",
+    "board_details": {
+      "chip_resources": [
+        "LUTs 19,600 · RAM 156.8K · BRAM 1,088 Kbit",
+        "DSP M18×18 × 29 · PLL × 4",
+        "BGA256 封装，193 个可用 IO",
+        "内置 2M×32bit EM SDRAM"
+      ],
+      "onboard_peripherals": [
+        "USB-JTAG 编程（板载下载器）",
+        "Type-C USB 供电 + USB转UART 串口",
+        "HDMI 接口 × 2（输入/输出角色需按板卡版本及工程确认）",
+        "VGA 接口（RGB 444 输出）",
+        "千兆以太网（RTL8211 + HR911130A）",
+        "TF 卡槽（SD 模式）",
+        "SPI FLASH W25Q64（64Mbit）",
+        "8 段数码管 × 8 + 8 路双色 LED",
+        "4 路独立 LED + 4 路按键 + 6 路乒乓开关",
+        "无源蜂鸣器",
+        "2 组 40 芯 GPIO 扩展口（每组 36 路 3.3V IO；差分配对需复核）"
+      ]
+    },
+    "uploads": {
+      "boardInfo": null,
+      "pinmap": null,
+      "schematic": null,
+      "constraints": null,
+      "recommend": {
+        "name": "HX4S20开发板手册-HDL版2410.pdf",
+        "size": 2423520,
+        "path": "doc/refs/fpgahw-442a1b-HX4S20开发板手册-HDL版2410.pdf",
+        "status": "uploaded"
+      }
+    },
+    "constraint_extract_result": {
+      "source_files": [],
+      "pin_assignments": [],
+      "clock_constraints": [],
+      "raw_summary": "Board-level facts are available in board_profile. Project-specific RTL port mappings have not been confirmed, so final assignments are intentionally empty.",
+      "updated_at": null
+    },
+    "updated_at": "2026-10-02T14:33:27.627Z",
+    "blocking_reasons": [
+      "project_top_ports_not_confirmed",
+      "project_specific_assignments_not_validated",
+      "ethernet_bank_voltage_conflict_unresolved"
+    ],
+    "vendor_id": "anlogic",
+    "vendor_name": "安路科技",
+    "chip_vendor_id": "anlogic",
+    "chip_vendor_name": "上海安路科技股份有限公司",
+    "board_brand_id": "kangxin",
+    "board_brand_name": "康芯",
+    "board_manufacturer": "杭州康芯电子有限公司",
+    "chip_series": "EG4",
+    "chip_device": "EG4S20BG256B",
+    "package_code": "LFBGA256",
+    "package_label": "LFBGA256 · EG4S20BG256B · 17×17 mm",
+    "full_part_number": "EG4S20BG256B",
+    "package_options": [
+      {
+        "package_code": "LFBGA256",
+        "package_family": "LFBGA",
+        "package_name": "LFBGA256",
+        "pin_count": 256,
+        "package_size_mm": "17x17",
+        "maximum_user_io": 193,
+        "source_type": "official_product_table_and_board_schematic"
+      }
+    ],
+    "chip_resources": {
+      "lut4": 19600,
+      "dff": 19600,
+      "distributed_ram_bits": 156800,
+      "embedded_ram": {
+        "total_kbit": 1088,
+        "total_bits": 1114112,
+        "blocks_9k": 64,
+        "blocks_32k": 16,
+        "correction_note": "The board manual prose says 1008K once; its resource table and current catalog support 1088 Kbit."
+      },
+      "dsp": {
+        "primitive": "M18x18",
+        "blocks": 29
+      },
+      "pll": 4,
+      "global_clocks": 16,
+      "configuration_sram_bits": 4988928,
+      "embedded_sdram": {
+        "organization": "2M x 32",
+        "capacity_bits": 67108864,
+        "capacity_bytes": 8388608,
+        "scope": "in_package_internal_memory",
+        "external_pin_constraints": false
+      },
+      "maximum_user_io": 193,
+      "physical_io_banks_for_bg256_board": 4,
+      "physical_io_bank_numbers": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "catalog_conflict_note": "A family-level boards.js compatibility field reports 8 banks; the BG256 schematic exposes Banks 0-3 and is authoritative for this board profile."
+    },
+    "toolchain": [
+      "td",
+      "iverilog"
+    ],
+    "board_profile": {
+      "schema": "iccoder.board_profile.v1",
+      "template_verified_at": "2026-09-02",
+      "identity": {
+        "board_id": "anlogic-pang-eg4s20",
+        "board_revision": "HX4S20 V1.0 / supplied schematic export 2025-09-21",
+        "board_brand": "康芯",
+        "board_manufacturer": "杭州康芯电子有限公司",
+        "chip_vendor": "安路科技",
+        "catalog_device": "EG4S20BG256B",
+        "td_project_device": "EG4S20BG256",
+        "package": {
+          "package_code": "LFBGA256",
+          "pin_count": 256,
+          "package_size_mm": "17x17"
+        }
+      },
+      "resources": {
+        "lut4": 19600,
+        "dff": 19600,
+        "distributed_ram_bits": 156800,
+        "embedded_ram": {
+          "total_kbit": 1088,
+          "total_bits": 1114112,
+          "blocks_9k": 64,
+          "blocks_32k": 16,
+          "correction_note": "The board manual prose says 1008K once; its resource table and current catalog support 1088 Kbit."
+        },
+        "dsp": {
+          "primitive": "M18x18",
+          "blocks": 29
+        },
+        "pll": 4,
+        "global_clocks": 16,
+        "configuration_sram_bits": 4988928,
+        "embedded_sdram": {
+          "organization": "2M x 32",
+          "capacity_bits": 67108864,
+          "capacity_bytes": 8388608,
+          "scope": "in_package_internal_memory",
+          "external_pin_constraints": false
+        },
+        "maximum_user_io": 193,
+        "physical_io_banks_for_bg256_board": 4,
+        "physical_io_bank_numbers": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "catalog_conflict_note": "A family-level boards.js compatibility field reports 8 banks; the BG256 schematic exposes Banks 0-3 and is authoritative for this board profile."
+      },
+      "toolchain": {
+        "synthesis_and_implementation": {
+          "id": "td",
+          "product": "Tang Dynasty",
+          "verified_project_version": "6.2.1",
+          "project_device": "EG4S20BG256"
+        },
+        "simulation": [
+          {
+            "id": "iverilog",
+            "purpose": "RTL simulation only"
+          }
+        ],
+        "io_constraint": {
+          "format": ".adc",
+          "dialect": "Anlogic Design Constraint"
+        },
+        "timing_constraint": {
+          "format": ".sdc",
+          "dialect": "SDC"
+        },
+        "programming": "On-board Anlogic USB Cable / JTAG"
+      },
+      "sources": [
+        {
+          "id": "hx-manual",
+          "file_name": "HX4S20开发板手册-HDL版2410.pdf",
+          "type": "board_manual",
+          "revision": "2410 / 2025-04",
+          "sha256": "E6D066FDC433259697BCF5DFE9EB791CF8A87D289C75E69FA40172D716AFCCFE",
+          "pdf_pages": 23
+        },
+        {
+          "id": "hx-power-schematic",
+          "file_name": "1_POWER.pdf",
+          "type": "schematic",
+          "revision": "2025-09-21",
+          "sha256": "371053B0A91B743ADE9C71790241B00C8DE9C8642C26C8D43D561C96CD3DAB73",
+          "pdf_pages": 2
+        },
+        {
+          "id": "hx-fpga-schematic",
+          "file_name": "2_FPGA.pdf",
+          "type": "schematic",
+          "revision": "2025-09-21",
+          "sha256": "C3ED8FCD4680D2C3A49101329A480BE94B7980AF1D262BA3BBF317DF144A4017",
+          "pdf_pages": 2
+        },
+        {
+          "id": "hx-power-config-schematic",
+          "file_name": "3_Power_and_Config.pdf",
+          "type": "schematic",
+          "revision": "2025-09-21",
+          "sha256": "5AF05600CE30BD0A716F145B2ABBA753AAE384F1857B5E99294DFB0AFDB3BC57",
+          "pdf_pages": 2
+        },
+        {
+          "id": "hx-gpio-schematic",
+          "file_name": "4_GPIO.pdf",
+          "type": "schematic",
+          "revision": "2025-09-21",
+          "sha256": "EA0914BA2F5E77F3BDE2FED9A5DA18FFD6C65CA905D93607AD767A1EB1A644A8",
+          "pdf_pages": 2
+        },
+        {
+          "id": "hx-dig-vga-schematic",
+          "file_name": "5_DIG_VGA.pdf",
+          "type": "schematic",
+          "revision": "2025-09-21",
+          "sha256": "1EC349AF10AE5952C3F31371C8340D1A8428CEDA8A8311742C15672201665EA7",
+          "pdf_pages": 2
+        },
+        {
+          "id": "hx-ex-device-schematic",
+          "file_name": "6_EX_DEVICE.pdf",
+          "type": "schematic",
+          "revision": "2025-09-21",
+          "sha256": "1D4848BF65715F1B71BEC93E211FE189EA1DDB1073DA8109FA85480D65EB0F97",
+          "pdf_pages": 2
+        },
+        {
+          "id": "hx-hdmi-schematic",
+          "file_name": "7_HDMI.pdf",
+          "type": "schematic",
+          "revision": "2025-09-21",
+          "sha256": "02DCD9367FD28D0D251D0333D44466AC54A3BAAE1EDD63AD2C4E6737241FEEF6",
+          "pdf_pages": 2
+        },
+        {
+          "id": "hx-ethernet-schematic",
+          "file_name": "8_Ethernet.pdf",
+          "type": "schematic",
+          "revision": "2025-09-21",
+          "sha256": "FBFCCCE640C4FC91F740AC6140CC7A5D59578B404CB90F93BCAC966DD33C2019",
+          "pdf_pages": 2
+        }
+      ],
+      "evidence_locators": {
+        "hx-manual-p5": {
+          "source": "hx-manual",
+          "pdf_page": 5,
+          "topic": "device and resources"
+        },
+        "hx-manual-p6-p22": {
+          "source": "hx-manual",
+          "pdf_pages": "6-22",
+          "topic": "board peripheral pin tables"
+        },
+        "hx-fpga-p1": {
+          "source": "hx-fpga-schematic",
+          "pdf_page": 1,
+          "topic": "device banks and all signal-to-ball mappings"
+        },
+        "hx-config-p1": {
+          "source": "hx-power-config-schematic",
+          "pdf_page": 1,
+          "topic": "VCCO, JTAG, configuration and boot flash"
+        }
+      },
+      "coverage": {
+        "level": "board_routes_cross_checked",
+        "reviewed_unique_user_locations": 168,
+        "fixed_board_locations_including_primary_clock": 96,
+        "expansion_header_locations": 72,
+        "catalog_maximum_user_io": 193,
+        "unrepresented_catalog_user_io": 25,
+        "note": "Unrepresented catalog I/O must not be assumed routed or usable on this board."
+      },
+      "power": {
+        "input": "USB 5V",
+        "rails_v": [
+          5,
+          3.3,
+          2.5,
+          1.2
+        ],
+        "vccint_v": 1.2,
+        "vccaux_v": 3.3
+      },
+      "bank_voltage_profiles": [
+        {
+          "bank": 0,
+          "schematic_voltage_v": 3.3,
+          "default_single_ended_io_standard": "LVCMOS33",
+          "status": "schematic_direct_rail"
+        },
+        {
+          "bank": 1,
+          "schematic_voltage_v": 3.3,
+          "default_single_ended_io_standard": "LVCMOS33",
+          "status": "schematic_direct_rail"
+        },
+        {
+          "bank": 2,
+          "schematic_voltage_v": 3.3,
+          "default_single_ended_io_standard": "LVCMOS33",
+          "status": "schematic_direct_rail_but_ethernet_reference_conflicts"
+        },
+        {
+          "bank": 3,
+          "schematic_voltage_v": 3.3,
+          "default_single_ended_io_standard": "LVCMOS33",
+          "status": "schematic_direct_rail"
+        }
+      ],
+      "clocks": [
+        {
+          "role": "primary_clock_50mhz",
+          "board_net": "FPGA_GCLK",
+          "package_pin": "R7",
+          "bank": 2,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "clock",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-fpga-schematic"
+          ],
+          "notes": null,
+          "frequency_hz": 50000000,
+          "period_ns": 20,
+          "series_resistor_ohm": 33
+        }
+      ],
+      "signals": [
+        {
+          "role": "user_led_1",
+          "board_net": "LED0",
+          "package_pin": "A4",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "high",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "physical_label": "LED1"
+        },
+        {
+          "role": "user_led_2",
+          "board_net": "LED1",
+          "package_pin": "A3",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "high",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "physical_label": "LED2"
+        },
+        {
+          "role": "user_led_3",
+          "board_net": "LED2",
+          "package_pin": "C10",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "high",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "physical_label": "LED3"
+        },
+        {
+          "role": "user_led_4",
+          "board_net": "LED3",
+          "package_pin": "B12",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "high",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "physical_label": "LED4"
+        },
+        {
+          "role": "user_key_1",
+          "board_net": "KEY_1",
+          "package_pin": "A2",
+          "bank": 3,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": "May be chosen by a project as a logical reset, but it is not a dedicated board reset."
+        },
+        {
+          "role": "user_key_2",
+          "board_net": "KEY_2",
+          "package_pin": "B2",
+          "bank": 3,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "user_key_3",
+          "board_net": "KEY_3",
+          "package_pin": "B1",
+          "bank": 3,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "user_key_4",
+          "board_net": "KEY_4",
+          "package_pin": "C1",
+          "bank": 3,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "slide_switch_1",
+          "board_net": "SWKEY_1",
+          "package_pin": "C8",
+          "bank": 0,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "switch_up_value": 1,
+          "switch_down_value": 0
+        },
+        {
+          "role": "slide_switch_2",
+          "board_net": "SWKEY_2",
+          "package_pin": "C7",
+          "bank": 0,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "switch_up_value": 1,
+          "switch_down_value": 0
+        },
+        {
+          "role": "slide_switch_3",
+          "board_net": "SWKEY_3",
+          "package_pin": "C6",
+          "bank": 0,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "switch_up_value": 1,
+          "switch_down_value": 0
+        },
+        {
+          "role": "slide_switch_4",
+          "board_net": "SWKEY_4",
+          "package_pin": "C5",
+          "bank": 0,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "switch_up_value": 1,
+          "switch_down_value": 0
+        },
+        {
+          "role": "buzzer",
+          "board_net": "BUZZER",
+          "package_pin": "H11",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed",
+            "buzzer_enable_switch_is_closed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "physical_enable_switch": {
+            "functional_name": "buzzer_enable_switch",
+            "manual_designator": "SW5",
+            "schematic_designator": "SW7"
+          }
+        },
+        {
+          "role": "uart_rx",
+          "board_net": "RXD",
+          "package_pin": "F12",
+          "bank": 0,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-fpga-schematic"
+          ],
+          "notes": null,
+          "bridge": "CH340G",
+          "flow_control": false
+        },
+        {
+          "role": "uart_tx",
+          "board_net": "TXD",
+          "package_pin": "D12",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-fpga-schematic"
+          ],
+          "notes": null,
+          "bridge": "CH340G",
+          "flow_control": false
+        },
+        {
+          "role": "tf_dat3_cs",
+          "board_net": "FPGA_SD_D3",
+          "package_pin": "A12",
+          "bank": 0,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "sd_or_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sd_or_spi_protocol_mode_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "card_detect_available": false
+        },
+        {
+          "role": "tf_dat2",
+          "board_net": "FPGA_SD_D2",
+          "package_pin": "A11",
+          "bank": 0,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "sd_or_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sd_or_spi_protocol_mode_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "card_detect_available": false
+        },
+        {
+          "role": "tf_dat1",
+          "board_net": "FPGA_SD_D1",
+          "package_pin": "B15",
+          "bank": 0,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "sd_or_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sd_or_spi_protocol_mode_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "card_detect_available": false
+        },
+        {
+          "role": "tf_dat0_miso",
+          "board_net": "FPGA_SD_D0",
+          "package_pin": "B14",
+          "bank": 0,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "sd_or_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sd_or_spi_protocol_mode_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "card_detect_available": false
+        },
+        {
+          "role": "tf_clk",
+          "board_net": "FPGA_SD_CLK",
+          "package_pin": "A14",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "sd_or_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sd_or_spi_protocol_mode_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "card_detect_available": false
+        },
+        {
+          "role": "tf_cmd_mosi",
+          "board_net": "FPGA_SD_CMD",
+          "package_pin": "A13",
+          "bank": 0,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "sd_or_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sd_or_spi_protocol_mode_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null,
+          "card_detect_available": false
+        },
+        {
+          "role": "user_flash_cs_n",
+          "board_net": "FLASH_CS",
+          "package_pin": "P8",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "single_dual_or_quad_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "flash_protocol_mode_confirmed",
+            "installed_flash_part_or_bom_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "user_flash_dq1_miso",
+          "board_net": "FLASH_SDO",
+          "package_pin": "N8",
+          "bank": 2,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "single_dual_or_quad_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "flash_protocol_mode_confirmed",
+            "installed_flash_part_or_bom_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "user_flash_dq2_wp_n",
+          "board_net": "FLASH_WP",
+          "package_pin": "P9",
+          "bank": 2,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "single_dual_or_quad_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "flash_protocol_mode_confirmed",
+            "installed_flash_part_or_bom_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "user_flash_dq3_hold_n",
+          "board_net": "FLASH_HOLD",
+          "package_pin": "R9",
+          "bank": 2,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "single_dual_or_quad_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "flash_protocol_mode_confirmed",
+            "installed_flash_part_or_bom_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "user_flash_sclk",
+          "board_net": "FLASH_SCLK",
+          "package_pin": "M9",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "single_dual_or_quad_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "flash_protocol_mode_confirmed",
+            "installed_flash_part_or_bom_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "user_flash_dq0_mosi",
+          "board_net": "FLASH_SDI",
+          "package_pin": "P7",
+          "bank": 2,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "single_dual_or_quad_spi",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "flash_protocol_mode_confirmed",
+            "installed_flash_part_or_bom_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "display_shared_dig0",
+          "board_net": "DIG0",
+          "package_pin": "C15",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "a",
+          "bicolor_led_function": "LED6_RED",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_dig1",
+          "board_net": "DIG1",
+          "package_pin": "C16",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "b",
+          "bicolor_led_function": "LED7_RED",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_dig2",
+          "board_net": "DIG2",
+          "package_pin": "B6",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "c",
+          "bicolor_led_function": "LED8_RED",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_dig3",
+          "board_net": "DIG3",
+          "package_pin": "A5",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "d",
+          "bicolor_led_function": "LED9_RED",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_dig4",
+          "board_net": "DIG4",
+          "package_pin": "B5",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "e",
+          "bicolor_led_function": "LED10_RED",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_dig5",
+          "board_net": "DIG5",
+          "package_pin": "A8",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "f",
+          "bicolor_led_function": "LED11_RED",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_dig6",
+          "board_net": "DIG6",
+          "package_pin": "A7",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "g",
+          "bicolor_led_function": "LED12_RED",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_dig7",
+          "board_net": "DIG7",
+          "package_pin": "A6",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "dp",
+          "bicolor_led_function": "LED13_RED",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_sel0",
+          "board_net": "SEL0",
+          "package_pin": "F16",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "digit_1",
+          "bicolor_led_function": "LED6_GREEN",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_sel1",
+          "board_net": "SEL1",
+          "package_pin": "E16",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "digit_2",
+          "bicolor_led_function": "LED7_GREEN",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_sel2",
+          "board_net": "SEL2",
+          "package_pin": "E12",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "digit_3",
+          "bicolor_led_function": "LED8_GREEN",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_sel3",
+          "board_net": "SEL3",
+          "package_pin": "E10",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "digit_4",
+          "bicolor_led_function": "LED9_GREEN",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_sel4",
+          "board_net": "SEL4",
+          "package_pin": "C13",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "digit_5",
+          "bicolor_led_function": "LED10_GREEN",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_sel5",
+          "board_net": "SEL5",
+          "package_pin": "F10",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "digit_6",
+          "bicolor_led_function": "LED11_GREEN",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_sel6",
+          "board_net": "SEL6",
+          "package_pin": "E11",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "digit_7",
+          "bicolor_led_function": "LED12_GREEN",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "display_shared_sel7",
+          "board_net": "SEL7",
+          "package_pin": "D11",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": "low",
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "seven_segment_or_bicolor_led",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_confirmed",
+            "sw6_display_route_confirmed"
+          ],
+          "conflicts": [
+            "seven_segment_and_bicolor_led_are_mutually_exclusive"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "shared_group": "sw6_display_mux",
+          "seven_segment_function": "digit_8",
+          "bicolor_led_function": "LED13_GREEN",
+          "mux_switch": "SW6",
+          "corrected_active_level_note": "Common-anode circuit is active-low; manual prose contains contradictory active-level statements."
+        },
+        {
+          "role": "vga_hsync",
+          "board_net": "VGA_HSYNC",
+          "package_pin": "E7",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": "video_mode_dependent"
+        },
+        {
+          "role": "vga_vsync",
+          "board_net": "VGA_VSYNC",
+          "package_pin": "F7",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": "video_mode_dependent"
+        },
+        {
+          "role": "vga_blue_0",
+          "board_net": "VGAD0",
+          "package_pin": "F6",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_blue_1",
+          "board_net": "VGAD1",
+          "package_pin": "E6",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_blue_2",
+          "board_net": "VGAD2",
+          "package_pin": "D6",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_blue_3",
+          "board_net": "VGAD3",
+          "package_pin": "D5",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_green_0",
+          "board_net": "VGAD4",
+          "package_pin": "T5",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_green_1",
+          "board_net": "VGAD5",
+          "package_pin": "P5",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_green_2",
+          "board_net": "VGAD6",
+          "package_pin": "N5",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_green_3",
+          "board_net": "VGAD7",
+          "package_pin": "N6",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_red_0",
+          "board_net": "VGAD8",
+          "package_pin": "R5",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_red_1",
+          "board_net": "VGAD9",
+          "package_pin": "L7",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_red_2",
+          "board_net": "VGAD10",
+          "package_pin": "L8",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "vga_red_3",
+          "board_net": "VGAD11",
+          "package_pin": "E13",
+          "bank": 0,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": "LVCMOS33",
+          "operation_mode": "normal",
+          "usable_for_auto_constraint": true,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-dig-vga-schematic"
+          ],
+          "notes": null,
+          "interface": "VGA resistor DAC RGB444",
+          "sync_polarity": null
+        },
+        {
+          "role": "hdmi_a_d2_p",
+          "board_net": "FPGA_HDMI1_D2_P",
+          "package_pin": "B3",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "P",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": true
+        },
+        {
+          "role": "hdmi_a_d2_n",
+          "board_net": "FPGA_HDMI1_D2_N",
+          "package_pin": "D3",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "N",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_a_d1_p",
+          "board_net": "FPGA_HDMI1_D1_P",
+          "package_pin": "E3",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "P",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": true
+        },
+        {
+          "role": "hdmi_a_d1_n",
+          "board_net": "FPGA_HDMI1_D1_N",
+          "package_pin": "E4",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "N",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_a_d0_p",
+          "board_net": "FPGA_HDMI1_D0_P",
+          "package_pin": "F5",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "P",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": true
+        },
+        {
+          "role": "hdmi_a_d0_n",
+          "board_net": "FPGA_HDMI1_D0_N",
+          "package_pin": "F4",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "N",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_a_clk_p",
+          "board_net": "FPGA_HDMI1_CLK_P",
+          "package_pin": "K1",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "P",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": true
+        },
+        {
+          "role": "hdmi_a_clk_n",
+          "board_net": "FPGA_HDMI1_CLK_N",
+          "package_pin": "J1",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "N",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_a_scl",
+          "board_net": "FPGA_HDMI1_SCL",
+          "package_pin": "P1",
+          "bank": 3,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": null,
+          "tx_example_io_standard": null,
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_a_sda",
+          "board_net": "FPGA_HDMI1_SDA",
+          "package_pin": "R1",
+          "bank": 3,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": null,
+          "tx_example_io_standard": null,
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_a_hpd",
+          "board_net": "FPGA_HDMI1_HPD",
+          "package_pin": "K2",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": null,
+          "tx_example_io_standard": null,
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_a_cec",
+          "board_net": "FPGA_HDMI1_CEC",
+          "package_pin": "K3",
+          "bank": 3,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": null,
+          "tx_example_io_standard": null,
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_b_d2_p",
+          "board_net": "FPGA_HDMI2_D2_P",
+          "package_pin": "E1",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "P",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": true
+        },
+        {
+          "role": "hdmi_b_d2_n",
+          "board_net": "FPGA_HDMI2_D2_N",
+          "package_pin": "D1",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "N",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_b_d1_p",
+          "board_net": "FPGA_HDMI2_D1_P",
+          "package_pin": "F1",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "P",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": true
+        },
+        {
+          "role": "hdmi_b_d1_n",
+          "board_net": "FPGA_HDMI2_D1_N",
+          "package_pin": "F2",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "N",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_b_d0_p",
+          "board_net": "FPGA_HDMI2_D0_P",
+          "package_pin": "G5",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "P",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": true
+        },
+        {
+          "role": "hdmi_b_d0_n",
+          "board_net": "FPGA_HDMI2_D0_N",
+          "package_pin": "G6",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "N",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_b_clk_p",
+          "board_net": "FPGA_HDMI2_CLK_P",
+          "package_pin": "C3",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "P",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": true
+        },
+        {
+          "role": "hdmi_b_clk_n",
+          "board_net": "FPGA_HDMI2_CLK_N",
+          "package_pin": "C2",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": "N",
+          "tx_example_io_standard": "LVDS33",
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_b_scl",
+          "board_net": "FPGA_HDMI2_SCL",
+          "package_pin": "P2",
+          "bank": 3,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": null,
+          "tx_example_io_standard": null,
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_b_sda",
+          "board_net": "FPGA_HDMI2_SDA",
+          "package_pin": "R2",
+          "bank": 3,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": null,
+          "tx_example_io_standard": null,
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_b_hpd",
+          "board_net": "FPGA_HDMI2_HPD",
+          "package_pin": "J6",
+          "bank": 3,
+          "direction": "mode_dependent",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": null,
+          "tx_example_io_standard": null,
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "hdmi_b_cec",
+          "board_net": "FPGA_HDMI2_CEC",
+          "package_pin": "K5",
+          "bank": 3,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "hdmi_input_or_output",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "board_revision_and_ddc_level_shifter_confirmed",
+            "hdmi_input_or_output_role_confirmed",
+            "approved_td_io_standard_confirmed",
+            "project_port_name_and_direction_confirmed"
+          ],
+          "conflicts": [],
+          "source_refs": [
+            "hx-manual",
+            "hx-hdmi-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null,
+          "interface": "HDMI",
+          "differential_pair_member": null,
+          "tx_example_io_standard": null,
+          "emit_only_p_location_for_td_tx_example": false
+        },
+        {
+          "role": "rgmii_mdc",
+          "board_net": "MDC0",
+          "package_pin": "L13",
+          "bank": 1,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_mdio",
+          "board_net": "MDIO0",
+          "package_pin": "M13",
+          "bank": 1,
+          "direction": "inout",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_rxd_0",
+          "board_net": "RXD0",
+          "package_pin": "P6",
+          "bank": 2,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_rxd_1",
+          "board_net": "RXD1",
+          "package_pin": "M6",
+          "bank": 2,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_rxd_2",
+          "board_net": "RXD2",
+          "package_pin": "T9",
+          "bank": 2,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_rxd_3",
+          "board_net": "RXD3",
+          "package_pin": "N9",
+          "bank": 2,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_rx_ctl",
+          "board_net": "RXCTL/PHY_AD",
+          "package_pin": "T13",
+          "bank": 2,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_rx_clk",
+          "board_net": "RXC",
+          "package_pin": "T14",
+          "bank": 2,
+          "direction": "input",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_txd_0",
+          "board_net": "TXD0",
+          "package_pin": "T4",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_txd_1",
+          "board_net": "TXD1",
+          "package_pin": "T6",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_txd_2",
+          "board_net": "TXD2",
+          "package_pin": "M7",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_txd_3",
+          "board_net": "TXD3",
+          "package_pin": "T8",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_tx_ctl",
+          "board_net": "TXCTL",
+          "package_pin": "T7",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        },
+        {
+          "role": "rgmii_tx_clk",
+          "board_net": "TXCLK",
+          "package_pin": "T12",
+          "bank": 2,
+          "direction": "output",
+          "connection": "direct",
+          "active_level": null,
+          "io_voltage_v": 3.3,
+          "io_standard": null,
+          "operation_mode": "rgmii",
+          "usable_for_auto_constraint": false,
+          "constraint_status": "manual_and_schematic_cross_checked",
+          "required_conditions": [
+            "vcco2_and_phy_io_voltage_physically_confirmed",
+            "approved_reference_adc_and_sdc_confirmed",
+            "project_port_name_and_rgmii_timing_confirmed"
+          ],
+          "conflicts": [
+            "vcco2_3v3_schematic_vs_lvcmos25_reference_example"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ethernet-schematic",
+            "hx-power-config-schematic"
+          ],
+          "notes": null
+        }
+      ],
+      "reserved_signals": [
+        {
+          "role": "program_b",
+          "board_net": "FPGA_PROGRAM_B",
+          "package_pin": "T2",
+          "direction": "input",
+          "active_level": "low",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "init_b",
+          "board_net": "FPGA_INITN_B",
+          "package_pin": "R3",
+          "direction": "open_drain_or_status",
+          "active_level": "low",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "done",
+          "board_net": "FPGA_DONE",
+          "package_pin": "P13",
+          "direction": "output",
+          "active_level": "high",
+          "indicator": "LED17",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "mode_0",
+          "board_net": "FPGA_M0",
+          "package_pin": "T11",
+          "strap": "pull_up",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "mode_1",
+          "board_net": "FPGA_M1",
+          "package_pin": "N11",
+          "strap": "pull_down",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "jtag_tck",
+          "board_net": "TCK",
+          "package_pin": "C14",
+          "direction": "input",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "jtag_tdi",
+          "board_net": "TDI",
+          "package_pin": "C12",
+          "direction": "input",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "jtag_tms",
+          "board_net": "TMS",
+          "package_pin": "A15",
+          "direction": "input",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "jtag_tdo",
+          "board_net": "TDO",
+          "package_pin": "E14",
+          "direction": "output",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "boot_flash_clk",
+          "board_net": "MSPI_CLK",
+          "package_pin": "R11",
+          "direction": "output",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "boot_flash_mosi",
+          "board_net": "MSPI_MOSI",
+          "package_pin": "T10",
+          "direction": "output",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "boot_flash_cs_n",
+          "board_net": "MSPI_CS",
+          "package_pin": "T3",
+          "direction": "output",
+          "active_level": "low",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        },
+        {
+          "role": "boot_flash_miso",
+          "board_net": "MSPI_MISO",
+          "package_pin": "P10",
+          "direction": "input",
+          "connection": "dedicated_configuration",
+          "usable_for_auto_constraint": false,
+          "source_refs": [
+            "hx-power-config-schematic",
+            "hx-manual"
+          ],
+          "notes": "Reserved configuration/programming resource; do not bind as ordinary user GPIO."
+        }
+      ],
+      "connectors": [
+        {
+          "name": "J1",
+          "type": "2x20_header",
+          "connection": "direct_via_47ohm_series_resistors",
+          "orientation": "front_view_pin_1_is_upper_left",
+          "io_voltage_v": 3.3,
+          "five_volt_tolerant": false,
+          "differential_pairing_confirmed": false,
+          "fixed_pins": [
+            {
+              "header_pin": 11,
+              "net": "5V"
+            },
+            {
+              "header_pin": 12,
+              "net": "GND"
+            },
+            {
+              "header_pin": 29,
+              "net": "3V3"
+            },
+            {
+              "header_pin": 30,
+              "net": "GND"
+            }
+          ],
+          "signal_pins": [
+            {
+              "header_pin": 1,
+              "signal_name": "GPIOA_0",
+              "package_pin": "D14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 2,
+              "signal_name": "GPIOA_1",
+              "package_pin": "G11",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 3,
+              "signal_name": "GPIOA_2",
+              "package_pin": "G12",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 4,
+              "signal_name": "GPIOA_3",
+              "package_pin": "F13",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 5,
+              "signal_name": "GPIOA_4",
+              "package_pin": "H13",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 6,
+              "signal_name": "GPIOA_5",
+              "package_pin": "H14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 7,
+              "signal_name": "GPIOA_6",
+              "package_pin": "J14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 8,
+              "signal_name": "GPIOA_7",
+              "package_pin": "J13",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 9,
+              "signal_name": "GPIOA_8",
+              "package_pin": "K12",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 10,
+              "signal_name": "GPIOA_9",
+              "package_pin": "L14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 13,
+              "signal_name": "GPIOA_10",
+              "package_pin": "M14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 14,
+              "signal_name": "GPIOA_11",
+              "package_pin": "P11",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 15,
+              "signal_name": "GPIOA_12",
+              "package_pin": "L10",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 16,
+              "signal_name": "GPIOA_13",
+              "package_pin": "M10",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 17,
+              "signal_name": "GPIOA_14",
+              "package_pin": "D16",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 18,
+              "signal_name": "GPIOA_15",
+              "package_pin": "E15",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 19,
+              "signal_name": "GPIOA_16",
+              "package_pin": "F14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 20,
+              "signal_name": "GPIOA_17",
+              "package_pin": "F15",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 21,
+              "signal_name": "GPIOA_18",
+              "package_pin": "G16",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 22,
+              "signal_name": "GPIOA_19",
+              "package_pin": "G14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 23,
+              "signal_name": "GPIOA_20",
+              "package_pin": "K15",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 24,
+              "signal_name": "GPIOA_21",
+              "package_pin": "J16",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 25,
+              "signal_name": "GPIOA_22",
+              "package_pin": "H15",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 26,
+              "signal_name": "GPIOA_23",
+              "package_pin": "H16",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 27,
+              "signal_name": "GPIOA_24",
+              "package_pin": "K16",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 28,
+              "signal_name": "GPIOA_25",
+              "package_pin": "M16",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 31,
+              "signal_name": "GPIOA_26",
+              "package_pin": "M15",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 32,
+              "signal_name": "GPIOA_27",
+              "package_pin": "L16",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 33,
+              "signal_name": "GPIOA_28",
+              "package_pin": "N16",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 34,
+              "signal_name": "GPIOA_29",
+              "package_pin": "N14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 35,
+              "signal_name": "GPIOA_30",
+              "package_pin": "P16",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 36,
+              "signal_name": "GPIOA_31",
+              "package_pin": "P15",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 37,
+              "signal_name": "GPIOA_32",
+              "package_pin": "R16",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 38,
+              "signal_name": "GPIOA_33",
+              "package_pin": "R15",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 39,
+              "signal_name": "GPIOA_34",
+              "package_pin": "T15",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 40,
+              "signal_name": "GPIOA_35",
+              "package_pin": "R14",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            }
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-gpio-schematic"
+          ],
+          "notes": "Adjacent IDC positions are not guaranteed to be native FPGA P/N mates. Do not infer differential pairs from header adjacency."
+        },
+        {
+          "name": "J2",
+          "type": "2x20_header",
+          "connection": "direct_via_47ohm_series_resistors",
+          "orientation": "front_view_pin_1_is_lower_right",
+          "io_voltage_v": 3.3,
+          "five_volt_tolerant": false,
+          "differential_pairing_confirmed": false,
+          "fixed_pins": [
+            {
+              "header_pin": 11,
+              "net": "5V"
+            },
+            {
+              "header_pin": 12,
+              "net": "GND"
+            },
+            {
+              "header_pin": 29,
+              "net": "3V3"
+            },
+            {
+              "header_pin": 30,
+              "net": "GND"
+            }
+          ],
+          "signal_pins": [
+            {
+              "header_pin": 1,
+              "signal_name": "GPIOB_0",
+              "package_pin": "P4",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 2,
+              "signal_name": "GPIOB_1",
+              "package_pin": "N4",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 3,
+              "signal_name": "GPIOB_2",
+              "package_pin": "N3",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 4,
+              "signal_name": "GPIOB_3",
+              "package_pin": "M5",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 5,
+              "signal_name": "GPIOB_4",
+              "package_pin": "M3",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 6,
+              "signal_name": "GPIOB_5",
+              "package_pin": "M4",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 7,
+              "signal_name": "GPIOB_6",
+              "package_pin": "L3",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 8,
+              "signal_name": "GPIOB_7",
+              "package_pin": "J3",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 9,
+              "signal_name": "GPIOB_8",
+              "package_pin": "J4",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 10,
+              "signal_name": "GPIOB_9",
+              "package_pin": "H4",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 13,
+              "signal_name": "GPIOB_10",
+              "package_pin": "N1",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 14,
+              "signal_name": "GPIOB_11",
+              "package_pin": "M2",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 15,
+              "signal_name": "GPIOB_12",
+              "package_pin": "M1",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 16,
+              "signal_name": "GPIOB_13",
+              "package_pin": "L1",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 17,
+              "signal_name": "GPIOB_14",
+              "package_pin": "H2",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 18,
+              "signal_name": "GPIOB_15",
+              "package_pin": "H1",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 19,
+              "signal_name": "GPIOB_16",
+              "package_pin": "G1",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 20,
+              "signal_name": "GPIOB_17",
+              "package_pin": "G3",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 21,
+              "signal_name": "GPIOB_18",
+              "package_pin": "L4",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 22,
+              "signal_name": "GPIOB_19",
+              "package_pin": "L5",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 23,
+              "signal_name": "GPIOB_20",
+              "package_pin": "K6",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 24,
+              "signal_name": "GPIOB_21",
+              "package_pin": "H3",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 25,
+              "signal_name": "GPIOB_22",
+              "package_pin": "H5",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 26,
+              "signal_name": "GPIOB_23",
+              "package_pin": "F3",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 27,
+              "signal_name": "GPIOB_24",
+              "package_pin": "E2",
+              "bank": 3,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 28,
+              "signal_name": "GPIOB_25",
+              "package_pin": "J11",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 31,
+              "signal_name": "GPIOB_26",
+              "package_pin": "J12",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 32,
+              "signal_name": "GPIOB_27",
+              "package_pin": "K11",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 33,
+              "signal_name": "GPIOB_28",
+              "package_pin": "K14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 34,
+              "signal_name": "GPIOB_29",
+              "package_pin": "L12",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 35,
+              "signal_name": "GPIOB_30",
+              "package_pin": "M12",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 36,
+              "signal_name": "GPIOB_31",
+              "package_pin": "M11",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 37,
+              "signal_name": "GPIOB_32",
+              "package_pin": "N12",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 38,
+              "signal_name": "GPIOB_33",
+              "package_pin": "P14",
+              "bank": 1,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 39,
+              "signal_name": "GPIOB_34",
+              "package_pin": "P12",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            },
+            {
+              "header_pin": 40,
+              "signal_name": "GPIOB_35",
+              "package_pin": "R12",
+              "bank": 2,
+              "io_voltage_v": 3.3,
+              "default_io_standard": "LVCMOS33",
+              "usable_for_auto_constraint": false,
+              "required_conditions": [
+                "project_port_name_and_direction_confirmed",
+                "single_ended_or_true_fpga_differential_pair_confirmed"
+              ],
+              "source_refs": [
+                "hx-manual",
+                "hx-gpio-schematic"
+              ]
+            }
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-gpio-schematic"
+          ],
+          "notes": "Adjacent IDC positions are not guaranteed to be native FPGA P/N mates. Do not infer differential pairs from header adjacency."
+        }
+      ],
+      "memories": [
+        {
+          "role": "embedded_sdram",
+          "type": "SDRAM",
+          "organization": "2M x 32",
+          "capacity_mbit": 64,
+          "capacity_mb": 8,
+          "scope": "in_package_internal_memory",
+          "external_pin_constraints": false,
+          "constraint_method": "vendor_memory_interface_or_primitive",
+          "source_refs": [
+            "hx-manual"
+          ]
+        },
+        {
+          "role": "user_spi_flash",
+          "type": "SPI NOR",
+          "part_number": null,
+          "part_number_candidates": [
+            "W25Q64",
+            "W25X64"
+          ],
+          "model_confirmed": false,
+          "capacity_mbit": 64,
+          "signal_roles": [
+            {
+              "role": "user_flash_cs_n",
+              "board_net": "FLASH_CS",
+              "package_pin": "P8",
+              "bank": 2,
+              "direction": "output",
+              "connection": "direct",
+              "active_level": "low",
+              "io_voltage_v": 3.3,
+              "io_standard": "LVCMOS33",
+              "operation_mode": "single_dual_or_quad_spi",
+              "usable_for_auto_constraint": false,
+              "constraint_status": "manual_and_schematic_cross_checked",
+              "required_conditions": [
+                "project_port_name_confirmed",
+                "flash_protocol_mode_confirmed",
+                "installed_flash_part_or_bom_confirmed"
+              ],
+              "conflicts": [],
+              "source_refs": [
+                "hx-manual",
+                "hx-ex-device-schematic"
+              ],
+              "notes": null
+            },
+            {
+              "role": "user_flash_dq1_miso",
+              "board_net": "FLASH_SDO",
+              "package_pin": "N8",
+              "bank": 2,
+              "direction": "mode_dependent",
+              "connection": "direct",
+              "active_level": null,
+              "io_voltage_v": 3.3,
+              "io_standard": "LVCMOS33",
+              "operation_mode": "single_dual_or_quad_spi",
+              "usable_for_auto_constraint": false,
+              "constraint_status": "manual_and_schematic_cross_checked",
+              "required_conditions": [
+                "project_port_name_confirmed",
+                "flash_protocol_mode_confirmed",
+                "installed_flash_part_or_bom_confirmed"
+              ],
+              "conflicts": [],
+              "source_refs": [
+                "hx-manual",
+                "hx-ex-device-schematic"
+              ],
+              "notes": null
+            },
+            {
+              "role": "user_flash_dq2_wp_n",
+              "board_net": "FLASH_WP",
+              "package_pin": "P9",
+              "bank": 2,
+              "direction": "mode_dependent",
+              "connection": "direct",
+              "active_level": "low",
+              "io_voltage_v": 3.3,
+              "io_standard": "LVCMOS33",
+              "operation_mode": "single_dual_or_quad_spi",
+              "usable_for_auto_constraint": false,
+              "constraint_status": "manual_and_schematic_cross_checked",
+              "required_conditions": [
+                "project_port_name_confirmed",
+                "flash_protocol_mode_confirmed",
+                "installed_flash_part_or_bom_confirmed"
+              ],
+              "conflicts": [],
+              "source_refs": [
+                "hx-manual",
+                "hx-ex-device-schematic"
+              ],
+              "notes": null
+            },
+            {
+              "role": "user_flash_dq3_hold_n",
+              "board_net": "FLASH_HOLD",
+              "package_pin": "R9",
+              "bank": 2,
+              "direction": "mode_dependent",
+              "connection": "direct",
+              "active_level": "low",
+              "io_voltage_v": 3.3,
+              "io_standard": "LVCMOS33",
+              "operation_mode": "single_dual_or_quad_spi",
+              "usable_for_auto_constraint": false,
+              "constraint_status": "manual_and_schematic_cross_checked",
+              "required_conditions": [
+                "project_port_name_confirmed",
+                "flash_protocol_mode_confirmed",
+                "installed_flash_part_or_bom_confirmed"
+              ],
+              "conflicts": [],
+              "source_refs": [
+                "hx-manual",
+                "hx-ex-device-schematic"
+              ],
+              "notes": null
+            },
+            {
+              "role": "user_flash_sclk",
+              "board_net": "FLASH_SCLK",
+              "package_pin": "M9",
+              "bank": 2,
+              "direction": "output",
+              "connection": "direct",
+              "active_level": null,
+              "io_voltage_v": 3.3,
+              "io_standard": "LVCMOS33",
+              "operation_mode": "single_dual_or_quad_spi",
+              "usable_for_auto_constraint": false,
+              "constraint_status": "manual_and_schematic_cross_checked",
+              "required_conditions": [
+                "project_port_name_confirmed",
+                "flash_protocol_mode_confirmed",
+                "installed_flash_part_or_bom_confirmed"
+              ],
+              "conflicts": [],
+              "source_refs": [
+                "hx-manual",
+                "hx-ex-device-schematic"
+              ],
+              "notes": null
+            },
+            {
+              "role": "user_flash_dq0_mosi",
+              "board_net": "FLASH_SDI",
+              "package_pin": "P7",
+              "bank": 2,
+              "direction": "mode_dependent",
+              "connection": "direct",
+              "active_level": null,
+              "io_voltage_v": 3.3,
+              "io_standard": "LVCMOS33",
+              "operation_mode": "single_dual_or_quad_spi",
+              "usable_for_auto_constraint": false,
+              "constraint_status": "manual_and_schematic_cross_checked",
+              "required_conditions": [
+                "project_port_name_confirmed",
+                "flash_protocol_mode_confirmed",
+                "installed_flash_part_or_bom_confirmed"
+              ],
+              "conflicts": [],
+              "source_refs": [
+                "hx-manual",
+                "hx-ex-device-schematic"
+              ],
+              "notes": null
+            }
+          ],
+          "selected_mode": null,
+          "resource_constraint_ready": false,
+          "blocking_reasons_if_selected": [
+            "installed_flash_part_or_bom_unconfirmed",
+            "single_dual_or_quad_spi_mode_unconfirmed"
+          ],
+          "source_refs": [
+            "hx-manual",
+            "hx-ex-device-schematic"
+          ]
+        },
+        {
+          "role": "boot_configuration_flash",
+          "type": "SPI NOR",
+          "part_number": "W25Q16",
+          "nominal_capacity_mbit": 16,
+          "manual_conflicting_capacity_mbit": 64,
+          "capacity_status": "part_number_nominal_capacity_preferred_manual_typo_recorded",
+          "user_pin_constraints": false,
+          "source_refs": [
+            "hx-manual",
+            "hx-power-config-schematic"
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "hx-display-mux",
+          "resources": [
+            "seven_segment_display",
+            "eight_bicolor_leds"
+          ],
+          "selector": "SW6",
+          "rule": "Select exactly one physical display path; both functions share DIG0-7 and SEL0-7."
+        },
+        {
+          "id": "hx-rgmii-voltage",
+          "resources": [
+            "rgmii",
+            "Bank2"
+          ],
+          "rule": "Do not emit RGMII pin/electrical/timing constraints until VCCO2 and the approved reference design are reconciled."
+        },
+        {
+          "id": "hx-hdmi-revision-role",
+          "resources": [
+            "HDMI-A",
+            "HDMI-B"
+          ],
+          "rule": "Confirm board revision, input/output role, DDC level shifting and TD I/O standard before constraint emission."
+        }
+      ],
+      "constraint_generation_policy": {
+        "overall_readiness": "not_ready_until_project_ports_and_selected_resource_gates_are_confirmed",
+        "can_generate_pin_candidates_for": [
+          "primary_clock_50mhz",
+          "user_leds",
+          "user_keys",
+          "slide_switches",
+          "uart",
+          "vga",
+          "tf_after_protocol_selection",
+          "single_ended_expansion_io_after_port_selection"
+        ],
+        "must_confirm_before_final": [
+          "top-level RTL port names and directions",
+          "selected interface and protocol modes",
+          "SW6 display route when display resources are selected",
+          "buzzer physical enable switch when buzzer is selected",
+          "user SPI Flash part and SPI width when Flash is selected",
+          "HDMI board revision, direction and electrical standard when HDMI is selected",
+          "RGMII Bank2 voltage and approved timing template when Ethernet is selected",
+          "native P/N pairing rather than adjacent header positions for differential expansion I/O"
+        ],
+        "never_auto_generate_for": [
+          "JTAG and configuration pins",
+          "boot configuration Flash",
+          "a fabricated PHY reset pin",
+          "a fabricated TF card-detect pin",
+          "external pins for the in-package SDRAM"
+        ]
+      }
+    },
+    "template_ref": {
+      "schema": "iccoder.board_template.v1",
+      "board_id": "anlogic-pang-eg4s20",
+      "template_version": "1.0.0",
+      "index_version": "1.0.0",
+      "relative_path": "anlogic-pang-eg4s20/config.json",
+      "sha256": "14fa5cdefb482ccbf9f4248bea1743a40707783f4d1028b1aa3704e27399a2bd"
+    }
+  }
+}

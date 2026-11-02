@@ -1,0 +1,24 @@
+src/user_source/hdl_source/SD/frame_read_write.v:118: warning: Port 20 (rdusedw) of frame_fifo_write expects 10 bits, got 9.
+src/user_source/hdl_source/SD/frame_read_write.v:118:        : Padding 1 high bits of the port.
+src/user_source/hdl_source/SD/frame_read_write.v:167: warning: Port 21 (wrusedw) of frame_fifo_read expects 10 bits, got 9.
+src/user_source/hdl_source/SD/frame_read_write.v:167:        : Padding 1 high bits of the port.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 14 (read_addr_0) of frame_read_write expects 21 bits, got 24.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 3 high bits of the expression.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 15 (read_addr_1) of frame_read_write expects 21 bits, got 24.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 3 high bits of the expression.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 16 (read_addr_2) of frame_read_write expects 21 bits, got 56.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 35 high bits of the expression.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 17 (read_addr_3) of frame_read_write expects 21 bits, got 24.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 3 high bits of the expression.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 19 (read_len) of frame_read_write expects 21 bits, got 24.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 3 high bits of the expression.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 30 (write_addr_0) of frame_read_write expects 21 bits, got 24.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 3 high bits of the expression.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 31 (write_addr_1) of frame_read_write expects 21 bits, got 24.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 3 high bits of the expression.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 32 (write_addr_2) of frame_read_write expects 21 bits, got 56.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 35 high bits of the expression.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 33 (write_addr_3) of frame_read_write expects 21 bits, got 24.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 3 high bits of the expression.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323: warning: Port 35 (write_len) of frame_read_write expects 21 bits, got 24.
+src/user_source/hdl_source/top_tf_hdmi_audio.v:323:        : Pruning 3 high bits of the expression.

@@ -1,0 +1,21 @@
+Location         : C:\Users\yy135\Desktop\med_screen\src\td_project\HDMI1.4b_Transmitter_v1.0_Runs\phy_1
+Running with     : Tang Dynasty v6.2.168116
+                   Copyright (c) 2012-2025 Anlogic Inc.
+Top Model        : top
+Device           : EG4S20BG256
+Speed            : NA
+
+Timing Mode      : manhattan
+Setup            : WNS -6693ps  TNS  -808689ps  NUM_FEPS   325
+Hold             : WNS   -11ps  TNS     -220ps  NUM_FEPS    20
+
+Flow Statistics  :
+--------------------------------------------------------------------------------------------------
+     command     |  #calls  |  wall time  |  cpu time(s)  |  used memory(mb)  |  peak memory(mb)  
+--------------------------------------------------------------------------------------------------
+      place      |    1     |  36s(100%)  |   55(100%)    |        475        |        475        
+    import_db    |    1     |   0s(0%)    |     0(0%)     |        209        |        209        
+  import_device  |    1     |   0s(0%)    |     0(0%)     |        83         |        83         
+--------------------------------------------------------------------------------------------------
+      total      |    3     |     36s     |      55       |        475        |        475        
+--------------------------------------------------------------------------------------------------

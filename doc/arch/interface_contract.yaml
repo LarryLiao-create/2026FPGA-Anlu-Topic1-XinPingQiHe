@@ -1,0 +1,265 @@
+# 图片切换淡入淡出（Alpha 交叉溶解）转场 —— 接口契约
+# 工程：med_screen（安路 EG4S20BG256B / HX4S20 开发板）
+# 顶层：src/user_source/hdl_source/top_tf_hdmi_audio.v  (module top)
+#
+# 说明：
+# - 本文件冻结“转场特性”新增/改动的所有端口契约，是后续 RTL 生成的唯一口径。
+# - 未列出的既有端口保持现状，不在本次改动范围。
+# - 命名约定：old = 上一次显示的帧（转场起点），new = 本次新写入并即将显示的帧。
+
+meta:
+  task: image_crossfade_transition
+  top_module: top
+  device: EG4S20BG256B
+  status: frozen_for_rtl
+  clock_domains:
+    video_clk:   { freq_mhz: 25.0,  desc: 像素时钟，640x480@60 }
+    ext_mem_clk: { freq_mhz: 125.0, desc: 嵌入式 SDRAM 用户接口时钟 }
+    sd_card_clk: { freq_mhz: 100.0, desc: TF 卡链路时钟 }
+    audio_mclk:  { freq_mhz: 12.288, desc: HDMI 音频主时钟 }
+    hdmi_5x_clk: { freq_mhz: 125.0, desc: TMDS 5x 串行时钟 }
+
+# ============================================================
+# 1. 顶层外部端口（与现状一致，无新增/删除）
+# ============================================================
+top_external_ports:
+  - { name: clk,          dir: in,  width: 1,  domain: refclk_50m, reset: none, protocol: clock,   note: 板载 50MHz 参考时钟 }
+  - { name: rst_n,        dir: in,  width: 1,  domain: async,      reset: async_low, protocol: reset, note: 低有效异步复位，内部与 audio_pll_lock 合并为 rst_all }
+  - { name: key1,         dir: in,  width: 1,  domain: async,      reset: none, protocol: button,  note: 手动下一张（经消抖） }
+  - { name: key2,         dir: in,  width: 1,  domain: async,      reset: none, protocol: button,  note: 自动轮播开/关（经消抖） }
+  - { name: key3,         dir: in,  width: 1,  domain: async,      reset: none, protocol: button,  note: 亮度档位切换 }
+  - { name: seg_sel,      dir: out, width: 6,  domain: clk,        reset: none, protocol: gpio,    note: 数码管位选 }
+  - { name: seg_data,     dir: out, width: 8,  domain: clk,        reset: none, protocol: gpio,    note: 数码管段选 }
+  - { name: HDMI_CLK_P,   dir: out, width: 1,  domain: hdmi_5x_clk,reset: none, protocol: tmds,    note: TMDS 时钟差分正端 }
+  - { name: HDMI_D2_P,    dir: out, width: 1,  domain: hdmi_5x_clk,reset: none, protocol: tmds,    note: TMDS 数据2（R） }
+  - { name: HDMI_D1_P,    dir: out, width: 1,  domain: hdmi_5x_clk,reset: none, protocol: tmds,    note: TMDS 数据1（G） }
+  - { name: HDMI_D0_P,    dir: out, width: 1,  domain: hdmi_5x_clk,reset: none, protocol: tmds,    note: TMDS 数据0（B） }
+  - { name: HDMI_DDC_SCL, dir: out, width: 1,  domain: video_clk,  reset: none, protocol: i2c,     note: EDID 读取时钟 }
+  - { name: HDMI_DDC_SDA, dir: inout,width:1,  domain: video_clk,  reset: none, protocol: i2c,     note: EDID 数据（三态） }
+  - { name: sd_ncs,       dir: out, width: 1,  domain: sd_card_clk,reset: none, protocol: spi,     note: TF 卡片选 }
+  - { name: sd_dclk,      dir: out, width: 1,  domain: sd_card_clk,reset: none, protocol: spi,     note: TF 卡时钟 }
+  - { name: sd_mosi,      dir: out, width: 1,  domain: sd_card_clk,reset: none, protocol: spi,     note: TF 卡 MOSI }
+  - { name: sd_miso,      dir: in,  width: 1,  domain: sd_card_clk,reset: none, protocol: spi,     note: TF 卡 MISO }
+
+# ============================================================
+# 2. 新增模块 A：xfd_line_fetch（mem_clk 域，逐行双取数引擎）
+#    职责：转场期间独占 SDRAM 读端口，按显示行号 y 依次读
+#          old_base + y*640 的 640 词与 new_base + y*640 的 640 词，
+#          边读边写进两块行缓存（old/new 各 2 页，按 y[0] 乒乓）。
+# ============================================================
+module_xfd_line_fetch:
+  path: src/user_source/hdl_source/xfd_line_fetch.v
+  clock_domain: ext_mem_clk
+  reset: rst_all (async high, synchronized to ext_mem_clk before use)
+  parameters:
+    - { name: ADDR_BITS,  default: 21,  note: SDRAM 字地址位宽（2^21 字） }
+    - { name: LINE_LEN,   default: 640, note: 一行有效像素数 }
+    - { name: ROW_MAX,    default: 480, note: 一帧有效行数，行号上限（含） }
+    - { name: BURST_SIZE, default: 256, note: 突发长度，与 frame_fifo_read 一致 }
+  ports:
+    - { name: rst,        dir: in,  width: 1,          domain: ext_mem_clk, protocol: reset, note: 高有效，已同步 }
+    - { name: mem_clk,    dir: in,  width: 1,          domain: ext_mem_clk, protocol: clock }
+    - { name: xfd_en,     dir: in,  width: 1,          domain: ext_mem_clk, protocol: level, note: 转场使能，来自 video 域同步后的电平（1=由本引擎独占读端口） }
+    - { name: vs_tgl,     dir: in,  width: 1,          domain: ext_mem_clk, protocol: toggle,note: 帧起始 toggle，video 域 vs 上升沿翻转 }
+    - { name: line_tgl,   dir: in,  width: 1,          domain: ext_mem_clk, protocol: toggle,note: 行起始 toggle，video 域 de 上升沿翻转 }
+    - { name: old_base,   dir: in,  width: 21,         domain: ext_mem_clk, protocol: level, note: 旧图缓冲基址（= 转场前 disp 对应 BUF 地址，少写时为该值-307200 取模修正前值） }
+    - { name: new_base,   dir: in,  width: 21,         domain: ext_mem_clk, protocol: level, note: 新图缓冲基址（= 当前 disp 对应 BUF 地址） }
+    - { name: App_rd_en,  dir: out, width: 1,          domain: ext_mem_clk, protocol: handshake, note: SDRAM 读请求，xfd_en=1 时由本模块驱动 }
+    - { name: App_rd_addr,dir: out, width: 21,         domain: ext_mem_clk, protocol: addr,  note: SDRAM 读地址 }
+    - { name: Sdr_rd_en,  dir: in,  width: 1,          domain: ext_mem_clk, protocol: valid, note: SDRAM 读数据有效（写进行缓存使能来源） }
+    - { name: Sdr_rd_dout,dir: in,  width: 32,         domain: ext_mem_clk, protocol: data,  note: SDRAM 读数据（32bit = {R,G,B,8'b0}） }
+    - { name: wr_en_old,  dir: out, width: 1,          domain: ext_mem_clk, protocol: valid, note: 旧图行缓存写使能 }
+    - { name: wr_en_new,  dir: out, width: 1,          domain: ext_mem_clk, protocol: valid, note: 新图行缓存写使能 }
+    - { name: wr_page,    dir: out, width: 1,          domain: ext_mem_clk, protocol: level, note: 当前行页选择 = 当前行号[0]，0=页0，1=页1 }
+    - { name: wr_addr,    dir: out, width: 10,         domain: ext_mem_clk, protocol: addr,  note: 行内字地址 0..639 }
+    - { name: wr_data,    dir: out, width: 32,         domain: ext_mem_clk, protocol: data,  note: 写数据 = Sdr_rd_dout 打拍 }
+    - { name: fetch_row,  dir: out, width: 10,         domain: ext_mem_clk, protocol: status,note: 已写入行缓存的最大行号，调试用 }
+    - { name: busy,       dir: out, width: 1,          domain: ext_mem_clk, protocol: status,note: 当前有一次行取数在进行 }
+  behavior_contract:
+    - 行取数顺序：先取 old 行整行 640 词，再取 new 行整行 640 词；两者写入同一个 wr_page，地址 0..639。
+    - 取数触发：xfd_en 上升后，等待 vs_tgl 变化，取第 0 行；此后每次 line_tgl 变化，取下一行（行号 +1）。
+    - 行号越界保护：行号 > ROW_MAX 时不再取数（丢弃该 trigger）。
+    - 页乒乓：本模块只写页 (row[0])；另一页由显示侧读，硬件上互不冲突（见 clock_reset_cdc.md）。
+    - 时序预算：单行取数 = 2*640 词，@125MHz 突发效率按 60% 估算约 17us < 32us 行周期，必须在本行有效期内完成。
+    - 与 frame_fifo_read 互斥：xfd_en=1 期间 frame_fifo_read 处于 idle（read_req 被门控为 0），App_rd_en/App_rd_addr 由本模块驱动。
+
+# ============================================================
+# 3. 新增模块 B：xfd_disp_pipe（video_clk 域，行缓存读 + 混合流水）
+#    职责：按 de 计数像素 x，用 x 读 old/new 行缓存（页 = 当前显示行号[0]），
+#          做 out = (old*(256-a) + new*a) >> 8 的 alpha 混合，并输出与
+#          hs/vs/de 对齐的 rgb。时序结构对齐既有 video_delay 的 20 拍延迟。
+# ============================================================
+module_xfd_disp_pipe:
+  path: src/user_source/hdl_source/xfd_disp_pipe.v
+  clock_domain: video_clk
+  reset: rst_all (async high)
+  parameters:
+    - { name: LINE_LEN, default: 640, note: 一行有效像素数 }
+    - { name: LAT,      default: 20,  note: 对齐延迟，与 video_delay 的 hs_d[20] 一致（固定 20） }
+  ports:
+    - { name: video_clk,  dir: in,  width: 1,  domain: video_clk, protocol: clock }
+    - { name: rst,        dir: in,  width: 1,  domain: video_clk, protocol: reset, note: 高有效 }
+    - { name: xfd_en,     dir: in,  width: 1,  domain: video_clk, protocol: level, note: 转场使能，来自 xfd_ctrl }
+    - { name: alpha,      dir: in,  width: 9,  domain: video_clk, protocol: level, note: 0..256，0=全旧图，256=全新图 }
+    - { name: hs_in,      dir: in,  width: 1,  domain: video_clk, protocol: sync,  note: 来自 video_timing_data 的 hs_0 }
+    - { name: vs_in,      dir: in,  width: 1,  domain: video_clk, protocol: sync,  note: 来自 video_timing_data 的 vs_0 }
+    - { name: de_in,      dir: in,  width: 1,  domain: video_clk, protocol: valid, note: 来自 video_timing_data 的 de_0 }
+    - { name: rd_page,    dir: out, width: 1,  domain: video_clk, protocol: level, note: 行缓存读页选择 = 当前显示行号[0] }
+    - { name: rd_addr,    dir: out, width: 10, domain: video_clk, protocol: addr,  note: 行缓存读地址 = 当前像素 x }
+    - { name: old_dob,    dir: in,  width: 32, domain: video_clk, protocol: data,  note: 顶层按 rd_page 从 old 页0/页1 二选一后接入 }
+    - { name: new_dob,    dir: in,  width: 32, domain: video_clk, protocol: data,  note: 顶层按 rd_page 从 new 页0/页1 二选一后接入 }
+    - { name: hs_out,     dir: out, width: 1,  domain: video_clk, protocol: sync,  note: hs_in 延迟 LAT 拍 }
+    - { name: vs_out,     dir: out, width: 1,  domain: video_clk, protocol: sync,  note: vs_in 延迟 LAT 拍 }
+    - { name: de_out,     dir: out, width: 1,  domain: video_clk, protocol: valid, note: de_in 延迟 LAT 拍，与 rgb_out 严格对齐 }
+    - { name: rgb_out,    dir: out, width: 24, domain: video_clk, protocol: data,  note: 混合后像素 {R,G,B}，与 de_out 同拍有效 }
+    - { name: disp_row,   dir: out, width: 10, domain: video_clk, protocol: status,note: 当前显示行号，用于与取数引擎行号互证（调试） }
+  behavior_contract:
+    - 像素计数：内部 de 延时链 de_d[20:0]；de_d[18]=1 时 x 自增，de_d[18]=0 时 x 清零；x 即行缓存读地址（同拍用于 addrb）。
+    - 行号计数：de_d[20] 下降沿（一行结束）时 y = y+1；vs_in 有效边沿时 y = 0。rd_page = y[0]。
+    - 混合算式：每通道 out = (old*(256-alpha) + new*alpha) >> 8，alpha=0 结果为 old（精确），alpha=256 结果为 new（精确），中间误差 <= 1 LSB。
+    - 对齐：old_dob/new_dob 为 BRAM 输出（读延迟 1 拍），在 de_d[19] 拍做混合并寄存，rgb_out 于 de_d[20] 拍有效；hs_out/vs_out/de_out 取 hs_d[20]/vs_d[20]/de_d[20]，与既有 video_delay 完全同构，保证顶层二选一切换无相位跳变。
+    - xfd_en=0 时 rgb_out 无意义（顶层不选用），但内部计数仍随 de 运行以便 xfd_en 上升沿时刻状态已就绪。
+
+# ============================================================
+# 4. 新增模块 C：xfd_ctrl（video_clk 域，转场控制器）
+#    职责：同步 disp_buf_idx → 检测变化 → 在帧边界启动转场；产生 alpha 斜坡、
+#          xfd_en、xfd_busy；产生给取数引擎用的 vs_tgl / line_tgl（video 域翻转，
+#          由取数引擎侧同步）。
+# ============================================================
+module_xfd_ctrl:
+  path: src/user_source/hdl_source/xfd_ctrl.v
+  clock_domain: video_clk
+  reset: rst_all (async high)
+  parameters:
+    - { name: ALPHA_STEP, default: 4,   note: 每帧 alpha 增量；4→约64帧(≈1.07s)，8→约32帧(≈0.53s) }
+    - { name: BUF_STRIDE, default: 307200, note: 帧缓冲字节距离（字），用于由 idx 换算基址 }
+    - { name: BUF0_ADDR,  default: 0,      note: 缓冲0基址 }
+  ports:
+    - { name: video_clk,   dir: in,  width: 1, domain: video_clk, protocol: clock }
+    - { name: rst,         dir: in,  width: 1, domain: video_clk, protocol: reset, note: 高有效 }
+    - { name: disp_buf_idx,dir: in,  width: 2, domain: sd_card_clk, protocol: level, note: 来自 sd_card_bmp，2bit，内部 2-FF 同步；仅在帧边界变化 }
+    - { name: hs_in,       dir: in,  width: 1, domain: video_clk, protocol: sync,  note: video_timing_data 的 hs_0 }
+    - { name: vs_in,       dir: in,  width: 1, domain: video_clk, protocol: sync,  note: video_timing_data 的 vs_0 }
+    - { name: de_in,       dir: in,  width: 1, domain: video_clk, protocol: valid, note: video_timing_data 的 de_0 }
+    - { name: xfd_en,      dir: out, width: 1, domain: video_clk, protocol: level, note: 转场进行中；由顶层同步到 mem 域驱动取数引擎 }
+    - { name: xfd_busy,    dir: out, width: 1, domain: video_clk, protocol: level, note: 转场进行中；由顶层同步到 sd_card_clk 域，禁止 sd_card_bmp 启动新的写图任务 }
+    - { name: alpha,       dir: out, width: 9, domain: video_clk, protocol: level, note: 0..256 alpha 斜坡 }
+    - { name: old_idx,     dir: out, width: 2, domain: video_clk, protocol: level, note: 旧图缓冲索引（转场前的 disp），顶层同步到 mem 域 }
+    - { name: new_idx,     dir: out, width: 2, domain: video_clk, protocol: level, note: 新图缓冲索引（当前 disp），顶层同步到 mem 域 }
+    - { name: vs_tgl,      dir: out, width: 1, domain: video_clk, protocol: toggle,note: vs 有效边沿翻转，供取数引擎同步 }
+    - { name: line_tgl,    dir: out, width: 1, domain: video_clk, protocol: toggle,note: de 上升沿翻转，供取数引擎同步 }
+  behavior_contract:
+    - 复位/首次采样：prev_disp <= 当前同步后的 disp，xfd_en=0，alpha=0；不产生转场。
+    - 启动：同步后的 disp 值与 prev_disp 不同 → 置 pending=1；在 pending && vs 有效边沿（帧边界）时，xfd_en<=1，alpha<=0，old_idx<=prev_disp，new_idx<=disp，pending<=0。
+      （即转场严格从帧边界开始，与既有读通路的帧切换点重合。）
+    - 斜坡：xfd_en=1 时每帧（vs 有效边沿）alpha <= alpha + ALPHA_STEP；alpha >= 256 时 alpha<=256 并在该帧边界 xfd_en<=0，prev_disp<=new_idx。
+    - xfd_busy 与 xfd_en 同源同拍（转场期间恒 1），顶层负责跨域同步到 sd 域。
+    - vs_tgl / line_tgl 无条件产生（不依赖 xfd_en），供取数引擎在转场期间计数；xfd_en=0 时引擎不动作，计数会在下次 xfd_en 上升后由 vs_tgl 重新对齐。
+    - 极性：hs_in/vs_in 的“有效边沿”定义为“本工程 color_bar 输出的有效极性”，实现时以 video_timing_data 内部同一判据为准，RTL 阶段以 vs 的起始边沿（与 scroll_offset 使用的 frame_pulse 同一判据）为基准。
+
+# ============================================================
+# 5. 修改模块 D：video_timing_data（video_clk 域）
+#    改动：新增 xfd_en 输入；read_req 触发改为“每帧一次”，并在 xfd_en 时强制清零。
+# ============================================================
+module_video_timing_data_change:
+  path: src/user_source/hdl_source/SD/video_timing_data.v
+  clock_domain: video_clk
+  change_type: modify_existing
+  added_ports:
+    - { name: xfd_en, dir: in, width: 1, domain: video_clk, protocol: level, note: 转场使能；=1 时 read_req 强制为 0 }
+  internal_changes:
+    - 新增 frame_pulse：对 de 下降沿计数，计数达到 V_ACTIVE-1 时产生一个 video_clk 周期的 frame_pulse（一帧一次），同步复位。
+    - read_req 置位改为 frame_pulse 触发（回到“每帧读整帧”的原始语义，read_len = FRAME_PIXELS）。
+    - read_req 清零条件扩展为 (read_req_ack | xfd_en)。
+  reason: |
+    现版本把 read_req 改为 video_de_fall 每行触发、read_len=640，但读地址仍是固定基址
+    （frame_fifo_read 无 y*640 行偏移），导致 480 行都读第 0 行；且 frame_fifo_read 的
+    rd_toggle 让相邻行交替读显示BUF与BUF2，进一步破坏显示。经用户确认“上板显示确实不对”。
+    转场方案改为在 mem 域由独立取数引擎做逐行双取数后，既有读通路不再需要逐行语义，
+    恢复“每帧整帧连续读”是已知可用、最稳的选择（见 risks.md R-01）。
+
+# ============================================================
+# 6. 修改模块 E：sd_card_bmp（sd_card_clk 域）
+#    改动：新增 xfd_busy 输入；转场期间禁止启动新的写图任务。
+# ============================================================
+module_sd_card_bmp_change:
+  path: src/user_source/hdl_source/SD/sd_card_bmp.v
+  clock_domain: sd_card_clk
+  change_type: modify_existing
+  added_ports:
+    - { name: xfd_busy, dir: in, width: 1, domain: sd_card_clk, protocol: level, note: 转场进行中；由顶层从 video 域同步而来 }
+  internal_changes:
+    - 三处 load_start 条件（首图加载、手动下一张、自动播放下一张）追加 && !xfd_busy。
+    - 保留 next_req_pending 语义：转场期间按下的“下一张”请求被记住，转场结束后自动执行，不丢按键。
+    - 不改动缓冲区管理（仍为 BUF0/BUF1 乒乓，write_buf_idx = disp_buf_idx^1）。
+  reason: |
+    转场期间 old 图用 BUF(disp^1)，而新写入目标正是 write_buf_idx = disp^1，若不禁止会覆盖
+    正在参与混合的旧图。用 xfd_busy 阻断 load 启动即可（详见 risks.md R-04 的竞态说明）。
+
+# ============================================================
+# 7. 修改模块 F：frame_fifo_read（mem_clk 域）
+#    改动：移除 rd_toggle 交替选择逻辑，恢复“单缓冲整帧顺序读”。
+# ============================================================
+module_frame_fifo_read_change:
+  path: src/user_source/hdl_source/SD/frame_fifo_read.v
+  clock_domain: ext_mem_clk
+  change_type: modify_existing
+  internal_changes:
+    - 删除 rd_toggle 及其在 S_END 的翻转；地址选择回到 read_addr_index_d1（disp_buf_idx 同步值）。
+    - 保持 read_addr_2 端口存在（BUF2 基址定义保留），但转场不再依赖它。
+  reason: |
+    rd_toggle 会让相邻行分别取自显示BUF与BUF2，是“隔行撕裂”的直接原因。转场改由独立引擎
+    实现后，读通路只需稳定顺序读一整帧。
+
+# ============================================================
+# 8. 行缓存 BRAM（复用已有 IP：RAM_0，1024x32，Simple Dual Port）
+#    实例数：4（old 页0/页1、new 页0/页1）
+# ============================================================
+bram_line_buffers:
+  ip: src/td_project/al_ip/RAM_0.v (EG_LOGIC_BRAM, MODE=PDPW, 32bit x 1024, REGMODE_A/B=NOREG)
+  instances:
+    - { name: u_ram_old_p0, portA_write: ext_mem_clk, portB_read: video_clk, wr_en: wr_en_old & ~wr_page }
+    - { name: u_ram_old_p1, portA_write: ext_mem_clk, portB_read: video_clk, wr_en: wr_en_old &  wr_page }
+    - { name: u_ram_new_p0, portA_write: ext_mem_clk, portB_read: video_clk, wr_en: wr_en_new & ~wr_page }
+    - { name: u_ram_new_p1, portA_write: ext_mem_clk, portB_read: video_clk, wr_en: wr_en_new &  wr_page }
+  read_mux:
+    old_dob = rd_page ? u_ram_old_p1.dob : u_ram_old_p0.dob
+    new_dob = rd_page ? u_ram_new_p1.dob : u_ram_new_p0.dob
+  resource_note: 每块 1024x32 = 32768bit，占用 1 个 32Kb BRAM 块；4 块共 4/16 个 32Kb 块，余量充足。
+
+# ============================================================
+# 9. 顶层新增仲裁与二选一（top）
+# ============================================================
+top_new_logic:
+  read_port_arbitration:
+    - App_rd_en   = xfd_en_mem ? xfd_App_rd_en   : fifo_App_rd_en
+    - App_rd_addr = xfd_en_mem ? xfd_App_rd_addr : fifo_App_rd_addr
+    - 说明：xfd_en_mem 为 video 域 xfd_en 同步到 mem 域的 2-FF 结果；切换只发生在帧边界附近，
+           切换时 frame_fifo_read 处于 S_IDLE（read_req 已门控），无半途切换风险。
+  fifo_write_gate:
+    - read_buf 的 we（= Sdr_rd_en）在转场期间被门控：fifo_we = Sdr_rd_en & ~xfd_en_mem
+    - 目的：避免取数引擎的 SDRAM 读数据污染读 FIFO（不门控也不会错，但会引入无用数据）。
+  display_mux:
+    - hs/vs/de/rgb 二选一：xfd_en_video ? xfd_pipe 输出 : 既有 video_delay 输出
+    - 切换仅发生在 xfd_en 的上升/下降沿，而该沿严格落在帧边界（xfd_ctrl 保证），因此不会在画面中途切换。
+    - rgb 输出进入既有 brightness_ctrl → osd_overlay → video_rgb_to_axis 链，下游不变。
+  cdc_instances:
+    - disp_buf_idx(sd)->video：2-FF（在 xfd_ctrl 内部）
+    - xfd_en(video)->mem：2-FF
+    - xfd_en(video)->sd：2-FF（即 xfd_busy）
+    - old_idx/new_idx(video)->mem：2bit 电平，各 bit 2-FF；仅在帧边界变化，变化后稳定 >=1 帧
+    - vs_tgl / line_tgl -> mem：2-FF + 边沿检测（toggle 同步）
+  base_address_map:
+    - BUF0_ADDR = 0
+    - BUF1_ADDR = 307200
+    - BUF2_ADDR = 614400 (本次不使用，定义保留)
+    - old_base = old_idx==0 ? BUF0_ADDR : (old_idx==1 ? BUF1_ADDR : BUF2_ADDR)
+    - new_base = new_idx==0 ? BUF0_ADDR : (new_idx==1 ? BUF1_ADDR : BUF2_ADDR)
+
+frozen_contracts:
+  - "行缓存页约定：取数引擎写页 = row[0]，显示侧读页 = 显示行号[0]，两侧均由 vs 复位行号，锁步一致。"
+  - "old/new 定义：old = 转场前的 disp 缓冲，new = 当前 disp 缓冲；转场期间不得写入这两块。"
+  - "转场仅在帧边界启停（xfd_ctrl 保证），顶层二选一仅在此时切换。"
+  - "alpha 位宽 9bit，范围 0..256，端点精确。"
+  - "像素域对齐延迟固定 20 拍，与 video_delay 同构。"
+  - "SDRAM 像素字字节布局：{R[31:24], G[23:16], B[15:8], 8'b0}。依据：sd_card_bmp.v 写端 write_data = {bmp_data[23:16],bmp_data[15:8],bmp_data[7:0],8'b0}；读端 top.v 的 video_delay 取 read_data[31:8]。xfd_disp_pipe 必须按此提取 R/G/B。"
